@@ -36,6 +36,12 @@ services:
       - '/data/sonarqube/data:/opt/sonarqube/data'
       - '/data/sonarqube/logs:/opt/sonarqube/logs'
       - '/data/sonarqube/extensions:/opt/sonarqube/extensions'
+  nexus:
+    image: 'sonatype/nexus:oss'
+    ports:
+      - '8081:8081'
+    volumes:
+      - '/data/nexus/data:/sonatype-work'      
   registry:
     image: 'registry:2.0'
     ports:
