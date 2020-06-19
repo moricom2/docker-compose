@@ -40,7 +40,7 @@
         hostname: 'gitlab.example.com'
         environment:
           GITLAB_OMNIBUS_CONFIG: |
-            external_url 'http://192.168.99.100';registry_external_url 'http://192.168.99.100:5005'
+            external_url 'http://<span style="color:blue">192.168.99.100</span>';registry_external_url 'http://<span style="color:blue">192.168.99.100</span>:5005'
             # Add any other gitlab.rb configuration here, each on its own line
           GITLAB_ROOT_PASSWORD: "root_git"
           GITLAB_TIMEZONE: "Asia/Seoul"  
