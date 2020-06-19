@@ -28,10 +28,13 @@
 ### 3. devtools 디렉토리 이동
 > cd docker-compose/devtools  
 
-### 4. docker-compose 실행
+### 4. nexus 컨테이너 실행시 volume 디렉토리 접근권한 오류 방지를 위한 설정
+> mkdir -p /data/nexus/data && chown -R 200 /data/nexus/data  
+
+### 5. docker-compose 실행
 > docker-compose up -d  
 
-### 5. 결과 확인
+### 6. 결과 확인
 > docker-compose ps  
 >> 
 
