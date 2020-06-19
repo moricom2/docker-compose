@@ -32,17 +32,17 @@
 > vi docker-compose.yml
 >> 
 
-  version: '3'
-  services:
-    gitlab:
-      image: 'gitlab/gitlab-ce:latest'
-      #restart: always
-      hostname: 'gitlab.example.com'
-      environment:
-        GITLAB_OMNIBUS_CONFIG: |
-          external_url 'http://192.168.99.100';registry_external_url 'http://192.168.99.100:5005'
-          ....
-          
+  version: '3'  
+  services:  
+    gitlab:  
+      image: 'gitlab/gitlab-ce:latest'  
+      #restart: always  
+      hostname: 'gitlab.example.com'  
+      environment:  
+        GITLAB_OMNIBUS_CONFIG: |  
+          external_url 'http://192.168.99.100';registry_external_url 'http://192.168.99.100:5005'  
+          ....  
+
 ### 4. nexus 컨테이너 실행시 volume 디렉토리 접근권한 오류 방지를 위한 설정
 > mkdir -p /data/nexus/data && chown -R 200 /data/nexus/data  
 
