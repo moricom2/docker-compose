@@ -11,9 +11,26 @@
 > systemctl enable docker.service  
 > systemctl status docker.service  
 
-### 4 docker-compose 설치 
+### 4. docker-compose 설치 
 > sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose  
 >
 > sudo chmod +x /usr/local/bin/docker-compose  
 
+
+# docker-compose 로 DevOps/CICD 도구(gitlab, jenkins, nexus, sonarqube, registry) 설치하기
+
+### 1. git 설치
+> yum -y install git  
+
+### 2. docker-compose.yml 샘플코드 저장소 복제
+> git clone https://github.com/moricom2/docker-compose.git  
+
+### 3. devtools 디렉토리 이동
+> cd docker-compose/devtools  
+
+### 4. docker-compose 실행
+> docker-compose up -d  
+
+### 5. 결과 확인
+> docker-compose ps  
 
