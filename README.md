@@ -39,7 +39,7 @@ services:
     hostname: 'gitlab.example.com'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-+        external_url 'http://192.168.99.100';registry_external_url 'http://192.168.99.100:5005'
++       external_url 'http://192.168.99.100';registry_external_url 'http://192.168.99.100:5005'
         # Add any other gitlab.rb configuration here, each on its own line
       GITLAB_ROOT_PASSWORD: "root_git"
       GITLAB_TIMEZONE: "Asia/Seoul"  
@@ -74,7 +74,7 @@ services:
     ports:
       - '8081:8081'
     volumes:
--      - '/data/nexus/data:/sonatype-work'      
+!     - '/data/nexus/data:/sonatype-work'      
   registry:
     image: 'registry:2.0'
     ports:
