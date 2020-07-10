@@ -107,7 +107,7 @@ services:
 
 ### 7. 결과 확인
 > docker-compose ps  
-
+```diff
                  Name                       Command                  State                                  Ports
     ------------------------------------------------------------------------------------------------------------------------------------
 !   devtools_eclipse-che_1   /scripts/entrypoint.sh start     Exit 0
@@ -116,6 +116,7 @@ services:
     devtools_nexus_1         /bin/sh -c java   -Dnexus- ...   Up             0.0.0.0:8081->8081/tcp
     devtools_registry_1      registry cmd/registry/conf ...   Up             0.0.0.0:5000->5000/tcp
     devtools_sonarqube_1     bin/run.sh bin/sonar.sh          Up             0.0.0.0:9000->9000/tcp
+```  
 
 > docker ps  
 ```diff
