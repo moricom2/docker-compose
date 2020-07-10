@@ -37,7 +37,7 @@
 ### 3. devtools 디렉토리 이동
 > cd docker-compose/devtools  
 
-### 4. docker-compose.yml 수정
+### 4. docker-compose.yml 수정 (IP 셋팅 등)
 > vi docker-compose.yml
 ```diff
 version: '3'
