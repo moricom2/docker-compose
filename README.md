@@ -79,6 +79,16 @@ services:
     image: 'registry:2.0'
     ports:
       - '5000:5000'
+  eclipse-che:
+    image: 'eclipse/che:6.19.0'
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '/data/eclipse:/data'
+    command:
+      - start
+    environment:
+      CHE_PORT: '8082'
+      # CHE_MULTIUSER: true
 ```
 
 ### 4. nexus 컨테이너 실행시 volume 디렉토리 접근권한 오류 방지를 위한 설정
@@ -87,9 +97,11 @@ services:
 ### 5. docker-compose 실행
 > docker-compose up -d  
 
+### 5-1. docker-compose로 이미지 받기(parallel) && docker-compose 실행
+> docker-compose pull --parallel && docker-compose up -d
+
 ### 6. 결과 확인
 > docker-compose ps  
->> 
 
             Name                      Command                  State                                  Ports
     ----------------------------------------------------------------------------------------------------------------------------------  
@@ -98,3 +110,12 @@ services:
     devtools_nexus_1       /bin/sh -c java   -Dnexus- ...   Up             0.0.0.0:8081->8081/tcp  
     devtools_registry_1    registry cmd/registry/conf ...   Up             0.0.0.0:5000->5000/tcp  
     devtools_sonarqube_1   bin/run.sh bin/sonar.sh          Up             0.0.0.0:9000->9000/tcp  
+
+### 7. 브라우저 테스트
+ 1) 소나큐브 : http://192.168.50.82:9000/ 
+ 2) 젠킨스: http://192.168.50.82:8080/ 
+ 3) gitlab: http://192.168.50.82/ > 로딩이 오래 걸림 
+ 4) 넥서스: http://192.168.50.82:8081/nexus 
+ 5) docker registry: http://192.168.50.82:5000/v2/ 
+  => "{}" 값 확인 하면 됨. 
+ 6) eclipse-che: http://192.168.50.82:8082 
