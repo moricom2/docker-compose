@@ -1,25 +1,25 @@
 # CentOS7 기준 docker, docker-compose 설치방법
 
-### nameserver 확인
+### 1. nameserver 확인 (8.8.8.8 없을 시 vi로 추가)
 > cat /etc/resolv.conf  
 ```diff
     nameserver 8.8.8.8
 ```
-### timezone 설정
+### 2. timezone 설정
 > timedatectl set-timezone Asia/Seoul  
 
-### 1. docker 커뮤니티에디션  리포지토리 연결 
+### 3. docker 커뮤니티에디션  리포지토리 연결 
 > yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo  
 
-### 2. docker 커뮤니티에디션 패키지 설치 
+### 4. docker 커뮤니티에디션 패키지 설치 
 > yum -y install docker-ce  
 
-### 3. docker 서비스 시작/활성/상태확인 
+### 5. docker 서비스 시작/활성/상태확인 
 > systemctl start docker.service  
 > systemctl enable docker.service  
 > systemctl status docker.service  
 
-### 4. docker-compose 설치 
+### 6. docker-compose 설치 
 > sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose  
 >
 > sudo chmod +x /usr/local/bin/docker-compose  
@@ -100,20 +100,20 @@ services:
       CHE_MULTIUSER: true
 ```
 
-### 4. nexus 컨테이너 실행시 volume 디렉토리 접근권한 오류 방지를 위한 설정
+### 5. nexus 컨테이너 실행시 volume 디렉토리 접근권한 오류 방지를 위한 설정
 > mkdir -p /data/nexus/data && chown -R 200 /data/nexus/data  
 
-### 5. eclipse-che 컨테이너 실행시 keycloak 관련 오류 방지를 위한 이미지 pull & tag 작업
+### 6. eclipse-che 컨테이너 실행시 keycloak 관련 오류 방지를 위한 이미지 pull & tag 작업
 > docker pull florentbenoit/jboss-keycloak-openshift:3.4.3.Final  
 > docker tag florentbenoit/jboss-keycloak-openshift:3.4.3.Final jboss/keycloak-openshift:3.4.3.Final  
 
-### 6. docker-compose 실행
+### 7. docker-compose 실행
 > docker-compose up -d  
 
-### 6-1. docker-compose로 이미지 받기(parallel) && docker-compose 실행
+### 7-1. docker-compose로 이미지 받기(parallel) && docker-compose 실행
 > docker-compose pull --parallel && docker-compose up -d
 
-### 7. 결과 확인
+### 8. 결과 확인
 > docker-compose ps  
 ```diff
                  Name                       Command                  State                                  Ports
@@ -148,7 +148,7 @@ services:
 +                                  devtools_gitlab_1
 ```  
 
-### 8. 브라우저 테스트
+### 9. 브라우저 테스트
  1) 소나큐브 : http://192.168.99.100:9000/  
  2) 젠킨스: http://192.168.99.100:8080/  
  3) gitlab: http://192.168.99.100/ > 로딩이 오래 걸림  
