@@ -123,21 +123,21 @@ services:
  CONTAINER ID        IMAGE                                  COMMAND                  CREATED             STATUS                    PORTS
                                NAMES
  3b76faf2f821        eclipse/che-server:6.19.0              "/entrypoint.sh"         16 minutes ago      Up 16 minutes             8000/tcp, 8080/tcp, 0.0.0.0:8082->8082/tcp
-+                                  che-8082
+!                                  che-8082
  0c8d6cf52ea9        jboss/keycloak-openshift:3.4.3.Final   "start-keycloak.sh -…"   16 minutes ago      Up 16 minutes (healthy)   0.0.0.0:5050->8080/tcp
-+                                  che8082_keycloak_1
+!                                  che8082_keycloak_1
  5cff8c7c936f        centos/postgresql-96-centos7:9.6       "container-entrypoin…"   16 minutes ago      Up 16 minutes (healthy)   5432/tcp
-+                                  che8082_postgres_1
+!                                  che8082_postgres_1
  e6e33dfd1bd4        sonatype/nexus:oss                     "/bin/sh -c 'java   …"   21 minutes ago      Up 21 minutes             0.0.0.0:8081->8081/tcp
-!                                  devtools_nexus_1
++                                  devtools_nexus_1
  362e26958539        moricom/jenkins:latest                 "/bin/tini -- /usr/l…"   21 minutes ago      Up 21 minutes             0.0.0.0:8080->8080/tcp, 50000/tcp
-!                                  devtools_jenkins_1
++                                  devtools_jenkins_1
  802ac4d52b16        sonarqube:latest                       "bin/run.sh bin/sona…"   21 minutes ago      Up 21 minutes             0.0.0.0:9000->9000/tcp
-!                                  devtools_sonarqube_1
++                                  devtools_sonarqube_1
  b4215ca7521e        registry:2.0                           "registry cmd/regist…"   21 minutes ago      Up 21 minutes             0.0.0.0:5000->5000/tcp
-!                                  devtools_registry_1
++                                  devtools_registry_1
  3b8c9cb93a7e        gitlab/gitlab-ce:latest                "/assets/wrapper"        21 minutes ago      Up 21 minutes (healthy)   22/tcp, 0.0.0.0:80->80/tcp,443/tcp, 0.0.0.0:5005->5005/tcp
-!                                  devtools_gitlab_1
++                                  devtools_gitlab_1
 ```  
 
 ### 8. 브라우저 테스트
