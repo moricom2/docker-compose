@@ -97,7 +97,9 @@ services:
       - start
     environment:
       CHE_PORT: '8082'
-      CHE_MULTIUSER: true
+      CHE_MULTIUSER: 'true'
+      CHE_IP: '192.168.99.100'
+      CHE_HOST: '192.168.99.100'
 ```
 
 ### 5. nexus 컨테이너 실행시 volume 디렉토리 접근권한 오류 방지를 위한 설정
