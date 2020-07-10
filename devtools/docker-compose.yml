@@ -46,3 +46,13 @@ services:
     image: 'registry:2.0'
     ports:
       - '5000:5000'
+  eclipse-che:
+    image: 'eclipse/che:6.19.0'
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '/data/eclipse:/data'
+    command:
+      - start
+    environment:
+      CHE_PORT: '8082'
+      CHE_MULTIUSER: 'true'      
