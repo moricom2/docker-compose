@@ -102,14 +102,14 @@ services:
 
 ### 6. 결과 확인
 > docker-compose ps  
-
-            Name                      Command                  State                                  Ports
-    ----------------------------------------------------------------------------------------------------------------------------------  
-    devtools_gitlab_1      /assets/wrapper                  Up (healthy)   22/tcp, 443/tcp, 0.0.0.0:5005->5005/tcp, 0.0.0.0:80->80/tcp  
-    devtools_jenkins_1     /bin/tini -- /usr/local/bi ...   Up             50000/tcp, 0.0.0.0:8080->8080/tcp  
-    devtools_nexus_1       /bin/sh -c java   -Dnexus- ...   Up             0.0.0.0:8081->8081/tcp  
-    devtools_registry_1    registry cmd/registry/conf ...   Up             0.0.0.0:5000->5000/tcp  
-    devtools_sonarqube_1   bin/run.sh bin/sonar.sh          Up             0.0.0.0:9000->9000/tcp  
+                 Name                       Command                  State                                  Ports
+        ------------------------------------------------------------------------------------------------------------------------------------
+        devtools_eclipse-che_1   /scripts/entrypoint.sh start     Exit 0
+        devtools_gitlab_1        /assets/wrapper                  Up (healthy)   22/tcp, 443/tcp, 0.0.0.0:5005->5005/tcp, 0.0.0.0:80->80/tcp
+        devtools_jenkins_1       /bin/tini -- /usr/local/bi ...   Up             50000/tcp, 0.0.0.0:8080->8080/tcp
+        devtools_nexus_1         /bin/sh -c java   -Dnexus- ...   Up             0.0.0.0:8081->8081/tcp
+        devtools_registry_1      registry cmd/registry/conf ...   Up             0.0.0.0:5000->5000/tcp
+        devtools_sonarqube_1     bin/run.sh bin/sonar.sh          Up             0.0.0.0:9000->9000/tcp
 
 ### 7. 브라우저 테스트
  1) 소나큐브 : http://192.168.99.100.82:9000/ 
