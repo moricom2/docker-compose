@@ -7,9 +7,7 @@
 ```
 ### timezone 설정
 > timedatectl set-timezone Asia/Seoul  
-```diff
-    nameserver 8.8.8.8
-```
+
 ### 1. docker 커뮤니티에디션  리포지토리 연결 
 > yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo  
 
