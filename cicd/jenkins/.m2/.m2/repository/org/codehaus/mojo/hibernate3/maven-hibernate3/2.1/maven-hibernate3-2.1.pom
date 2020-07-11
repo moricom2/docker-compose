@@ -1,0 +1,243 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>mojo</artifactId>
+    <version>16</version>
+  </parent>
+
+  <groupId>org.codehaus.mojo.hibernate3</groupId>
+  <artifactId>maven-hibernate3</artifactId>
+  <name>Hibernate 3 Maven 2 Integration</name>
+
+  <packaging>pom</packaging>
+  <version>2.1</version>
+  <description>Hibernate 3 Maven 2 Integration.</description>
+  <url>http://mojo.codehaus.org/hibernate3/</url>
+  <inceptionYear>2005</inceptionYear>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <scm>
+    <connection>scm:svn:https://svn.codehaus.org/mojo/tags/maven-hibernate3-2.1</connection>
+    <developerConnection>scm:svn:https://svn.codehaus.org/mojo/tags/maven-hibernate3-2.1</developerConnection>
+    <url>http://fisheye.codehaus.org/browse/mojo/tags/maven-hibernate3-2.1</url>
+  </scm>
+  <issueManagement>
+    <system>jira</system>
+    <url>http://jira.codehaus.org/browse/MHIBERNATE</url>
+  </issueManagement>
+  <prerequisites>
+    <maven>2.0.4</maven>
+  </prerequisites>
+  <distributionManagement>
+    <repository>
+      <id>codehaus.org</id>
+      <name>Mojo Central Repository</name>
+      <url>dav:https://dav.codehaus.org/repository/mojo</url>
+    </repository>
+    <snapshotRepository>
+      <id>codehaus.org</id>
+      <name>Mojo Central Development Repository</name>
+      <url>
+        dav:https://dav.codehaus.org/snapshots.repository/mojo
+      </url>
+    </snapshotRepository>
+    <site>
+      <id>codehaus.org</id>
+      <name>Mojo Website</name>
+      <url>dav:https://dav.codehaus.org/mojo/hibernate3</url>
+    </site>
+  </distributionManagement>
+  <developers>
+    <developer>
+      <id>jreyes</id>
+      <name>Johann Reyes</name>
+      <email>jreyes@hiberforum.org</email>
+      <timezone>-5</timezone>
+      <roles>
+        <role>Maintainer</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>tobrien</id>
+      <name>Tim O'Brien</name>
+      <email>tobrien@discursive.com</email>
+      <timezone>-6</timezone>
+      <roles>
+        <role>Developer</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <dependencyManagement>
+
+    <dependencies>
+
+      <dependency>
+        <groupId>hsqldb</groupId>
+        <artifactId>hsqldb</artifactId>
+        <version>1.8.0.7</version>
+      </dependency>
+      <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.14</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.maven</groupId>
+        <artifactId>maven-plugin-api</artifactId>
+        <version>2.0.4</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.maven</groupId>
+        <artifactId>maven-project</artifactId>
+        <version>2.0.4</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.maven.shared</groupId>
+        <artifactId>maven-plugin-testing-harness</artifactId>
+        <version>1.1</version>
+      </dependency>      
+      <dependency>
+        <groupId>org.apache.maven.reporting</groupId>
+        <artifactId>maven-reporting-impl</artifactId>
+        <version>2.0.4</version>
+      </dependency>
+      <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate</artifactId>
+        <version>3.2.5.ga</version>
+        <exclusions>
+          <exclusion>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-entitymanager</artifactId>
+        <version>3.3.1.ga</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-tools</artifactId>
+        <version>3.2.0.ga</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.geronimo.specs</groupId>
+        <artifactId>geronimo-jta_1.0.1B_spec</artifactId>
+        <version>1.1.1</version>
+      </dependency>
+
+    </dependencies>
+
+  </dependencyManagement>
+
+  <modules>
+    <module>maven-hibernate3-api</module>
+    <module>maven-hibernate3-components</module>
+    <module>hibernate3-maven-plugin</module>
+  </modules>
+
+  <build>
+
+    <defaultGoal>install</defaultGoal>
+
+    <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>validate</phase>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireJavaVersion>
+                  <version>[1.4,1.6)</version>
+                </requireJavaVersion>
+                <requireMavenVersion>
+                  <version>[2.0.5,)</version>
+                </requireMavenVersion>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.0.2</version>
+        <configuration>
+          <source>1.4</source>
+          <target>1.4</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-idea-plugin</artifactId>
+        <configuration>
+          <jdkName>1.5</jdkName>
+          <jdkLevel>1.5</jdkLevel>
+          <downloadSources>true</downloadSources>
+          <downloadJavadocs>true</downloadJavadocs>
+        </configuration>
+      </plugin>
+
+    </plugins>
+
+  </build>
+
+  <profiles>
+
+    <profile>
+      <id>super-helpful-integration-tests</id>
+
+      <activation>
+        <property>
+          <name>shit</name>
+          <value>true</value>
+        </property>
+      </activation>
+
+      <build>
+
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>shitty-maven-plugin</artifactId>
+            <version>1.0-alpha-1-SNAPSHOT</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>clean</goal>
+                  <goal>install</goal>
+                  <goal>test</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+        
+      </build>
+
+    </profile>
+
+  </profiles>
+
+</project>

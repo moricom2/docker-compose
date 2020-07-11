@@ -1,0 +1,9 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Sat Jul 11 15:25:44 UTC 2020
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact org.springframework\:spring-context\:pom\:4.2.4.RELEASE from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer file\: http\://repo1.maven.org/maven2/org/springframework/spring-context/4.2.4.RELEASE/spring-context-4.2.4.RELEASE.pom. Return code is\: 501 , ReasonPhrase\:HTTPS Required.
+http\://www.egovframe.go.kr/maven/.error=
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1594481143797
+https\://repo.maven.apache.org/maven2/.lastUpdated=1594481144261
+http\://www.egovframe.go.kr/maven/.lastUpdated=1594481143908
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1594481143935

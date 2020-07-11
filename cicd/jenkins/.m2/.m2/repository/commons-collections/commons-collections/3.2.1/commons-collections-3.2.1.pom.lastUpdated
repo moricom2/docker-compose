@@ -1,0 +1,9 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Sat Jul 11 15:26:08 UTC 2020
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact commons-collections\:commons-collections\:pom\:3.2.1 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer file\: http\://repo1.maven.org/maven2/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.pom. Return code is\: 501 , ReasonPhrase\:HTTPS Required.
+http\://www.egovframe.go.kr/maven/.error=
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1594481168296
+https\://repo.maven.apache.org/maven2/.lastUpdated=1594481168736
+http\://www.egovframe.go.kr/maven/.lastUpdated=1594481168383
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1594481168399
