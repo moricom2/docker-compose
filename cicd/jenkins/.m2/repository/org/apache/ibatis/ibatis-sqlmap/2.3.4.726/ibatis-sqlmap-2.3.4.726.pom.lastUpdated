@@ -1,0 +1,9 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Sat Jul 11 15:26:05 UTC 2020
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact org.apache.ibatis\:ibatis-sqlmap\:pom\:2.3.4.726 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer file\: http\://repo1.maven.org/maven2/org/apache/ibatis/ibatis-sqlmap/2.3.4.726/ibatis-sqlmap-2.3.4.726.pom. Return code is\: 501 , ReasonPhrase\:HTTPS Required.
+http\://www.egovframe.go.kr/maven/.error=
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1594481165083
+https\://repo.maven.apache.org/maven2/.lastUpdated=1594481165538
+http\://www.egovframe.go.kr/maven/.lastUpdated=1594481165184
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1594481165203
