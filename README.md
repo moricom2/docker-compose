@@ -162,8 +162,8 @@ services:
     environment:
       CHE_PORT: '8082'
       CHE_MULTIUSER: 'true'
-+     CHE_IP: '192.168.63.180'
-+     CHE_HOST: '192.168.63.180'
++     CHE_IP: '192.168.63.186'
++     CHE_HOST: '192.168.63.186'
 ```
 
 ### 4. eclipse-che 컨테이너 실행시 keycloak 관련 오류 방지를 위한 이미지 pull & tag 작업
@@ -197,5 +197,5 @@ services:
 ```  
 
 ### 7. 브라우저 테스트
- 1) che-8082: http://192.168.63.180:8082  
- 2) che8082_keycloak: http://192.168.63.180:5050
+ 1) che-8082: http://192.168.63.186:8082  
+ 2) che8082_keycloak: http://192.168.63.186:5050
