@@ -24,6 +24,115 @@
 >
 > sudo chmod +x /usr/local/bin/docker-compose  
 
+# docker-compose 로 DevOps/CICD 도구(gitlab, jenkins, nexus, sonarqube, registry) 설치하기
+
+### 1. git 설치
+> yum -y install git  
+
+### 2. docker-compose.yml 샘플코드 저장소 복제
+> mkdir /app && cd /app  
+> git clone https://github.com/moricom2/docker-compose.git  
+
+### 3. cicd 디렉토리 이동
+> cd docker-compose/cicd  
+
+### 4. docker-compose.yml 수정 (IP 셋팅 등)
+> vi docker-compose.yml
+```diff
+version: '3'
+services:
+  gitlab:
+    image: 'gitlab/gitlab-ce:latest'
+    #restart: always
+    hostname: 'gitlab.example.com'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
++       external_url 'http://192.168.99.100';registry_external_url 'http://192.168.99.100:5005'
+        # Add any other gitlab.rb configuration here, each on its own line
+      GITLAB_ROOT_PASSWORD: "root_git"
+      GITLAB_TIMEZONE: "Asia/Seoul"  
+    ports:
+      - '80:80'
+      - '5005:5005'
+    volumes:
+      - '/data/gitlab/config:/etc/gitlab'
+      - '/data/gitlab/logs:/var/log/gitlab'
+      - '/data/gitlab/data:/var/opt/gitlab'    
+  jenkins:
+    #image: 'jenkins:latest'
+    image: 'moricom/jenkins:latest'
+    user: root
+    ports:
+      - '8080:8080'
+    volumes:
+      - '/data/jenkins/jenkins_home:/var/jenkins_home'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '/usr/local/bin/docker:/usr/bin/docker'
+  sonarqube:
+    image: 'sonarqube:latest'
+    ports:
+      - '9000:9000'
+    volumes:
+      - '/data/sonarqube/conf:/opt/sonarqube/conf'
+      - '/data/sonarqube/data:/opt/sonarqube/data'
+      - '/data/sonarqube/logs:/opt/sonarqube/logs'
+      - '/data/sonarqube/extensions:/opt/sonarqube/extensions'
+  nexus:
+    image: 'sonatype/nexus:oss'
+    ports:
+      - '8081:8081'
+    volumes:
+!     - '/data/nexus/data:/sonatype-work'      
+  registry:
+    image: 'registry:2.0'
+    ports:
+      - '5000:5000'
+```
+
+### 5. nexus 컨테이너 실행시 volume 디렉토리 접근권한 오류 방지를 위한 설정
+> mkdir -p /data/nexus/data && chown -R 200 /data/nexus/data  
+
+### 6. docker-compose로 이미지 받기(parallel) && 실행 && 로그보기
+> docker-compose pull --parallel  
+> docker-compose up -d  
+> docker-compose logs -f
+
+### 7. 결과 확인
+> docker-compose ps  
+```diff
+                 Name                       Command                  State                                  Ports
+    ------------------------------------------------------------------------------------------------------------------------------------
+    cicd_gitlab_1        /assets/wrapper                  Up (healthy)   22/tcp, 443/tcp, 0.0.0.0:5005->5005/tcp, 0.0.0.0:80->80/tcp
+    cicd_jenkins_1       /bin/tini -- /usr/local/bi ...   Up             50000/tcp, 0.0.0.0:8080->8080/tcp
+    cicd_nexus_1         /bin/sh -c java   -Dnexus- ...   Up             0.0.0.0:8081->8081/tcp
+    cicd_registry_1      registry cmd/registry/conf ...   Up             0.0.0.0:5000->5000/tcp
+    cicd_sonarqube_1     bin/run.sh bin/sonar.sh          Up             0.0.0.0:9000->9000/tcp
+```  
+
+> docker ps  
+```diff
+ CONTAINER ID        IMAGE                                  COMMAND                  CREATED             STATUS                    PORTS
+                               NAMES
+ e6e33dfd1bd4        sonatype/nexus:oss                     "/bin/sh -c 'java   …"   21 minutes ago      Up 21 minutes             0.0.0.0:8081->8081/tcp
++                                  cicd_nexus_1
+ 362e26958539        moricom/jenkins:latest                 "/bin/tini -- /usr/l…"   21 minutes ago      Up 21 minutes             0.0.0.0:8080->8080/tcp, 50000/tcp
++                                  cicd_jenkins_1
+ 802ac4d52b16        sonarqube:latest                       "bin/run.sh bin/sona…"   21 minutes ago      Up 21 minutes             0.0.0.0:9000->9000/tcp
++                                  cicd_sonarqube_1
+ b4215ca7521e        registry:2.0                           "registry cmd/regist…"   21 minutes ago      Up 21 minutes             0.0.0.0:5000->5000/tcp
++                                  cicd_registry_1
+ 3b8c9cb93a7e        gitlab/gitlab-ce:latest                "/assets/wrapper"        21 minutes ago      Up 21 minutes (healthy)   22/tcp, 0.0.0.0:80->80/tcp,443/tcp, 0.0.0.0:5005->5005/tcp
++                                  cicd_gitlab_1
+```  
+
+### 9. 브라우저 테스트
+ 1) 소나큐브 : http://192.168.99.100:9000/  
+ 2) 젠킨스: http://192.168.99.100:8080/  
+ 3) gitlab: http://192.168.99.100/ > 로딩이 오래 걸림  
+ 4) 넥서스: http://192.168.99.100:8081/nexus  
+ 5) docker registry: http://192.168.99.100:5000/v2/  
+  => "{}" 값 확인 하면 됨.  
+ 6) eclipse-che: http://192.168.99.100:8082  
 
 # docker-compose 로 DevOps/CICD 도구(gitlab, jenkins, nexus, sonarqube, registry) 설치하기
 
