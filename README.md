@@ -27,7 +27,7 @@
 ### 7. git 설치
 > yum -y install git  
 
-# docker-compose 로 CICD 도구 설치하기
+# docker-compose 로 CICD 도구 설치
 
 ### 1. docker-compose.yml 샘플코드 저장소 복제
 > mkdir /app  
@@ -134,7 +134,7 @@ services:
  5) docker registry: http://192.168.99.100:5000/v2/  
   => "{}" 값 확인 하면 됨. 
 
-# docker-compose 로 개발도구 설치하기
+# docker-compose 로 개발도구 설치
 
 ### 1. docker-compose.yml 샘플코드 저장소 복제
 > mkdir /app  
