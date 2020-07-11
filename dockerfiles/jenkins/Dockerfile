@@ -1,7 +1,7 @@
 FROM jenkins:latest
 COPY share /var/jenkins_home
 USER root
-COPY ../.m2 /root/.m2
+COPY .m2 /root/.m2
 RUN apt-get update && apt-get install -y libltdl7
 RUN wget https://updates.jenkins-ci.org/latest/jenkins.war
 RUN cp -f jenkins.war /usr/share/jenkins/
