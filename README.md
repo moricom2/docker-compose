@@ -200,6 +200,11 @@ services:
  2) che8082_keycloak: http://192.168.63.186:5050
  
 ```diff
-! docker cp /app/docker-compose/cicd/jenkins/.m2/repository 컨테이너명:/home/user/.m2/
-! docker exec 컨테이너명 sudo chown -R user:user /home/user/.m2/repository
+docker cp /app/docker-compose/cicd/jenkins/.m2/repository 컨테이너명:/home/user/.m2/
+docker exec 컨테이너명 sudo chown -R user:user /home/user/.m2/repository
+```
+
+```diff
+cp ${current.project.path}/target/*.war $TOMCAT_HOME/webapps/ROOT.war
+$TOMCAT_HOME/bin/catalina.sh run 2>&1
 ```
