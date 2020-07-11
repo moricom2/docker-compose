@@ -59,8 +59,7 @@ services:
       - '/data/gitlab/logs:/var/log/gitlab'
       - '/data/gitlab/data:/var/opt/gitlab'    
   jenkins:
-    #image: 'jenkins:latest'
-!   image: 'moricom/jenkins:latest'
+!   image: 'jenkins:latest'
     user: root
     ports:
       - '8080:8080'
@@ -89,8 +88,8 @@ services:
       - '5000:5000'
 ```
 ### 4. jenkins 컨테이너 이미지 빌드 && volume 디렉토리에 디폴트 플러그인 copy
-> docker build -t moricom/jenkins ./jenkins/  
-> mkdir -p /data/jenkins && cp -R ./jenkins/share /data/jenkins/jenkins_home
+> docker build -t jenkins:latest /app/docker-compose/dockerfiles/jenkins/  
+> mkdir -p /data/jenkins && cp -R /app/docker-compose/dockerfiles/jenkins/share /data/jenkins/jenkins_home
 
 ### 5. nexus 컨테이너 실행시 volume 디렉토리 접근권한 오류 방지를 위한 설정
 > mkdir -p /data/nexus/data && chown -R 200 /data/nexus/data  
@@ -118,7 +117,7 @@ services:
                                NAMES
  e6e33dfd1bd4        sonatype/nexus:oss                     "/bin/sh -c 'java   …"   21 minutes ago      Up 21 minutes             0.0.0.0:8081->8081/tcp
 +                                  cicd_nexus_1
- 362e26958539        moricom/jenkins:latest                 "/bin/tini -- /usr/l…"   21 minutes ago      Up 21 minutes             0.0.0.0:8080->8080/tcp, 50000/tcp
+ 362e26958539        jenkins:latest                         "/bin/tini -- /usr/l…"   21 minutes ago      Up 21 minutes             0.0.0.0:8080->8080/tcp, 50000/tcp
 +                                  cicd_jenkins_1
  802ac4d52b16        sonarqube:latest                       "bin/run.sh bin/sona…"   21 minutes ago      Up 21 minutes             0.0.0.0:9000->9000/tcp
 +                                  cicd_sonarqube_1
@@ -139,8 +138,7 @@ services:
 # docker-compose 로 개발도구 설치
 
 ### 1. docker-compose.yml 샘플코드 저장소 복제
-> mkdir /app  
-> cd /app    
+> mkdir /app && cd /app    
 > git clone https://github.com/moricom2/docker-compose.git  
 
 ### 2. devtools 디렉토리 이동
@@ -200,8 +198,11 @@ services:
  2) che8082_keycloak: http://192.168.63.186:5050
  
  
+### 8. dev-machine 컨테이너 이미지 빌드 (maven 플러그인 copy)
+> docker build -t eclipse/ubuntu_jdk8:latest /app/docker-compose/dockerfiles/ubuntu_jdk8/  
+
 ```diff
-docker cp /app/docker-compose/cicd/jenkins/.m2/repository 컨테이너명:/home/user/.m2/
+docker cp /app/docker-compose/dockerfiles/.m2/repository 컨테이너명:/home/user/.m2/
 docker exec 컨테이너명 sudo chown -R user:user /home/user/.m2/repository
 ```
 
