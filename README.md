@@ -90,7 +90,7 @@ services:
       - '5000:5000'
 ```
 ### 4. jenkins 컨테이너 실행시 volume 디렉토리에 디폴트 플러그인 copy
-> cp -R ./jenkins/share /data/jenkins/jenkins_home
+> mkdir -p /data/jenkins && cp -R ./jenkins/share /data/jenkins/jenkins_home
 
 ### 5. nexus 컨테이너 실행시 volume 디렉토리 접근권한 오류 방지를 위한 설정
 > mkdir -p /data/nexus/data && chown -R 200 /data/nexus/data  
