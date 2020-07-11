@@ -61,12 +61,12 @@ services:
       - '/data/gitlab/data:/var/opt/gitlab'    
   jenkins:
     #image: 'jenkins:latest'
-    image: 'moricom/jenkins:latest'
+!   image: 'moricom/jenkins:latest'
     user: root
     ports:
       - '8080:8080'
     volumes:
-      - '/data/jenkins/jenkins_home:/var/jenkins_home'
+!     - '/data/jenkins/jenkins_home:/var/jenkins_home'
       - '/var/run/docker.sock:/var/run/docker.sock'
       - '/usr/local/bin/docker:/usr/bin/docker'
   sonarqube:
@@ -89,16 +89,18 @@ services:
     ports:
       - '5000:5000'
 ```
+### 4. jenkins 컨테이너 실행시 volume 디렉토리에 디폴트 플러그인 copy
+> cp -R ./jenkins/share /data/jenkins/jenkins_home
 
-### 4. nexus 컨테이너 실행시 volume 디렉토리 접근권한 오류 방지를 위한 설정
+### 5. nexus 컨테이너 실행시 volume 디렉토리 접근권한 오류 방지를 위한 설정
 > mkdir -p /data/nexus/data && chown -R 200 /data/nexus/data  
 
-### 5. docker-compose로 이미지 받기(parallel) && 실행 && 로그보기
+### 6. docker-compose로 이미지 받기(parallel) && 실행 && 로그보기
 > docker-compose pull --parallel  
 > docker-compose up -d  
 > docker-compose logs -f
 
-### 6. 결과 확인
+### 7. 결과 확인
 > docker-compose ps  
 ```diff
                  Name                       Command                  State                                  Ports
@@ -126,7 +128,7 @@ services:
 +                                  cicd_gitlab_1
 ```  
 
-### 7. 브라우저 테스트
+### 8. 브라우저 테스트
  1) gitlab: http://192.168.99.100/ > 로딩이 오래 걸림  
  2) 젠킨스: http://192.168.99.100:8080/   
  3) 소나큐브 : http://192.168.99.100:9000/   
