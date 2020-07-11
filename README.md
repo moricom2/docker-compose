@@ -1,4 +1,4 @@
-# CentOS7 기준 docker, docker-compose 설치방법 
+# CentOS7 기준 docker, docker-compose, git 설치
 
 ### 1. nameserver 확인 (8.8.8.8 없을 시 vi로 추가)
 > cat /etc/resolv.conf  
