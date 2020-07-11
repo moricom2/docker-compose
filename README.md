@@ -48,7 +48,7 @@ services:
     hostname: 'gitlab.example.com'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-+       external_url 'http://192.168.99.100';registry_external_url 'http://192.168.99.100:5005'
++       external_url 'http://192.168.63.180';registry_external_url 'http://192.168.63.180:5005'
         # Add any other gitlab.rb configuration here, each on its own line
       GITLAB_ROOT_PASSWORD: "root_git"
       GITLAB_TIMEZONE: "Asia/Seoul"  
@@ -130,11 +130,11 @@ services:
 ```  
 
 ### 8. 브라우저 테스트
- 1) gitlab: http://192.168.99.100/ > 로딩이 오래 걸림  
- 2) 젠킨스: http://192.168.99.100:8080/   
- 3) 소나큐브 : http://192.168.99.100:9000/   
- 4) 넥서스: http://192.168.99.100:8081/nexus  
- 5) docker registry: http://192.168.99.100:5000/v2/  
+ 1) gitlab: http://192.168.63.180/ > 로딩이 오래 걸림  
+ 2) 젠킨스: http://192.168.63.180:8080/   
+ 3) 소나큐브 : http://192.168.63.180:9000/   
+ 4) 넥서스: http://192.168.63.180:8081/nexus  
+ 5) docker registry: http://192.168.63.180:5000/v2/  
   => "{}" 값 확인 하면 됨. 
 
 # docker-compose 로 개발도구 설치
@@ -162,8 +162,8 @@ services:
     environment:
       CHE_PORT: '8082'
       CHE_MULTIUSER: 'true'
-+     CHE_IP: '192.168.99.100'
-+     CHE_HOST: '192.168.99.100'
++     CHE_IP: '192.168.63.180'
++     CHE_HOST: '192.168.63.180'
 ```
 
 ### 4. eclipse-che 컨테이너 실행시 keycloak 관련 오류 방지를 위한 이미지 pull & tag 작업
@@ -197,5 +197,5 @@ services:
 ```  
 
 ### 7. 브라우저 테스트
- 1) che-8082: http://192.168.99.100:8082  
- 2) che8082_keycloak: http://192.168.99.100:5050
+ 1) che-8082: http://192.168.63.180:8082  
+ 2) che8082_keycloak: http://192.168.63.180:5050
