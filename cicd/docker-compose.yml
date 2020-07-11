@@ -18,7 +18,7 @@ services:
       - '/data/gitlab/logs:/var/log/gitlab'
       - '/data/gitlab/data:/var/opt/gitlab'    
   jenkins:
-    image: 'jenkins:latest'
+    image: 'jenkins/jenkins:latest'
     user: root
     ports:
       - '8080:8080'
