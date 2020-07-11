@@ -1,9 +1,0 @@
-#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
-#Sat Jul 11 15:26:14 UTC 2020
-http\://repo1.maven.org/maven2/.error=Could not transfer artifact javax.servlet\:jstl\:pom\:1.2 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer file\: http\://repo1.maven.org/maven2/javax/servlet/jstl/1.2/jstl-1.2.pom. Return code is\: 501 , ReasonPhrase\:HTTPS Required.
-http\://www.egovframe.go.kr/maven/.error=
-@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1594481174053
-https\://repo.maven.apache.org/maven2/.lastUpdated=1594481174497
-http\://www.egovframe.go.kr/maven/.lastUpdated=1594481174169
-http\://maven.egovframe.kr\:8080/maven/.error=
-http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1594481174186

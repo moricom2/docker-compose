@@ -1,9 +1,0 @@
-#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
-#Sat Jul 11 15:26:43 UTC 2020
-http\://repo1.maven.org/maven2/.error=Could not transfer artifact org.junit.jupiter\:junit-jupiter-engine\:jar\:5.3.2 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer file\: http\://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.3.2/junit-jupiter-engine-5.3.2.jar. Return code is\: 501 , ReasonPhrase\:HTTPS Required.
-http\://www.egovframe.go.kr/maven/.error=
-@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1594481193725
-https\://repo.maven.apache.org/maven2/.lastUpdated=1594481203016
-http\://www.egovframe.go.kr/maven/.lastUpdated=1594481195735
-http\://maven.egovframe.kr\:8080/maven/.error=
-http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1594481196104

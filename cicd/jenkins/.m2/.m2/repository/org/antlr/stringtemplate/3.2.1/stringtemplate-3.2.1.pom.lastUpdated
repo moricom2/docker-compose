@@ -1,9 +1,0 @@
-#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
-#Sat Jul 11 15:26:19 UTC 2020
-http\://repo1.maven.org/maven2/.error=Could not transfer artifact org.antlr\:stringtemplate\:pom\:3.2.1 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer file\: http\://repo1.maven.org/maven2/org/antlr/stringtemplate/3.2.1/stringtemplate-3.2.1.pom. Return code is\: 501 , ReasonPhrase\:HTTPS Required.
-http\://www.egovframe.go.kr/maven/.error=
-@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1594481178898
-https\://repo.maven.apache.org/maven2/.lastUpdated=1594481179330
-http\://www.egovframe.go.kr/maven/.lastUpdated=1594481178989
-http\://maven.egovframe.kr\:8080/maven/.error=
-http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1594481179007
