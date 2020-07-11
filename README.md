@@ -30,8 +30,7 @@
 # docker-compose 로 CICD 도구 설치
 
 ### 1. docker-compose.yml 샘플코드 저장소 복제
-> mkdir /app  
-> cd /app  
+> mkdir /app && cd /app  
 > git clone https://github.com/moricom2/docker-compose.git  
 
 ### 2. cicd 디렉토리 이동
@@ -199,3 +198,8 @@ services:
 ### 7. 브라우저 테스트
  1) che-8082: http://192.168.63.186:8082  
  2) che8082_keycloak: http://192.168.63.186:5050
+ 
+```diff
+! docker cp /app/docker-compose/cicd/jenkins/.m2/repository 컨테이너명:/home/user/.m2/
+! docker exec 컨테이너명 sudo chown -R user:user /home/user/.m2/repository
+```
