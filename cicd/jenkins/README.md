@@ -1,8 +1,7 @@
 # Docker-ce
 
-# jenkins image build & push
-docker build -t moricom/jenkins .\
-docker push moricom/jenkins
+# jenkins image build
+docker build -t moricom/jenkins . 
 
 # jenkins default run 
 docker run -d -p 8080:8080 --name jenkins moricom/jenkins
