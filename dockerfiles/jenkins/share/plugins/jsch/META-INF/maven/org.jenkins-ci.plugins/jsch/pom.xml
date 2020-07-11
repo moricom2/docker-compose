@@ -4,17 +4,17 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.jenkins-ci.plugins</groupId>
   <artifactId>jsch</artifactId>
-  <version>0.1.55</version>
+  <version>0.1.55.2</version>
   <packaging>hpi</packaging>
   <name>Jenkins JSch dependency plugin</name>
   <description>Jenkins plugin that brings the JSch library as a plugin dependency, and provides
         an SSHAuthenticatorFactory for using JSch with the ssh-credentials plugin.</description>
-  <url>https://wiki.jenkins.io/display/JENKINS/JSch+plugin</url>
+  <url>https://github.com/jenkinsci/jsch-plugin</url>
   <inceptionYear>2016</inceptionYear>
   <licenses>
     <license>
       <name>MIT License</name>
-      <url>http://opensource.org/licenses/MIT</url>
+      <url>https://opensource.org/licenses/MIT</url>
     </license>
   </licenses>
   <developers>
@@ -40,10 +40,10 @@
     </developer>
   </developers>
   <scm>
-    <connection>scm:git:git@github.com:jenkinsci/jsch-plugin.git</connection>
+    <connection>scm:git:git://github.com/jenkinsci/jsch-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/jsch-plugin.git</developerConnection>
-    <tag>jsch-0.1.55</tag>
-    <url>https://github.com/jenkinsci/jsch-plugin/</url>
+    <tag>jsch-0.1.55.2</tag>
+    <url>https://github.com/jenkinsci/jsch-plugin</url>
   </scm>
   <distributionManagement>
     <repository>
@@ -64,14 +64,32 @@
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>trilead-api</artifactId>
+      <version>1.0.5</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>ssh-credentials</artifactId>
       <version>1.14</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>com.google.code.findbugs</groupId>
-      <artifactId>annotations</artifactId>
-      <version>3.0.0</version>
+      <groupId>org.jenkins-ci.main</groupId>
+      <artifactId>jenkins-core</artifactId>
+      <version>2.190.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.spotbugs</groupId>
+      <artifactId>spotbugs-annotations</artifactId>
+      <version>3.1.12</version>
       <scope>provided</scope>
       <optional>true</optional>
     </dependency>
@@ -85,40 +103,27 @@
     <dependency>
       <groupId>org.codehaus.mojo</groupId>
       <artifactId>animal-sniffer-annotations</artifactId>
-      <version>1.17</version>
+      <version>1.18</version>
       <scope>provided</scope>
       <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>3.1.0</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jenkins-ci.main</groupId>
-      <artifactId>jenkins-core</artifactId>
-      <version>2.60.3</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.7.25</version>
-      <scope>compile</scope>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>org.kohsuke</groupId>
-      <artifactId>access-modifier-annotation</artifactId>
-      <version>1.15</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging</artifactId>
       <version>1.2</version>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.kohsuke</groupId>
+      <artifactId>access-modifier-annotation</artifactId>
+      <version>1.14</version>
+      <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>annotation-indexer</artifactId>
+          <groupId>org.jenkins-ci</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
   </dependencies>
   <repositories>
@@ -132,7 +137,7 @@
       <plugin>
         <groupId>org.jenkins-ci.tools</groupId>
         <artifactId>maven-hpi-plugin</artifactId>
-        <version>3.1</version>
+        <version>3.11</version>
         <extensions>true</extensions>
       </plugin>
       <plugin>

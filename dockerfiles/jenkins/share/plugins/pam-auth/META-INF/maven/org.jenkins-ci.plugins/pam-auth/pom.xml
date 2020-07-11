@@ -4,23 +4,24 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.jenkins-ci.plugins</groupId>
   <artifactId>pam-auth</artifactId>
-  <version>1.5.1</version>
+  <version>1.6</version>
   <packaging>hpi</packaging>
   <name>PAM Authentication plugin</name>
   <description>Adds Unix Pluggable Authentication Module (PAM) support to Jenkins</description>
-  <url>http://wiki.jenkins-ci.org/display/JENKINS/PAM+Authentication+Plugin</url>
+  <url>https://wiki.jenkins.io/display/JENKINS/PAM+Authentication+Plugin</url>
   <inceptionYear>2016</inceptionYear>
   <licenses>
     <license>
       <name>The MIT license</name>
-      <url>http://www.opensource.org/licenses/mit-license.php</url>
+      <url>https://opensource.org/licenses/MIT</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
   <scm>
     <connection>scm:git:git://github.com/jenkinsci/pam-auth-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/pam-auth-plugin.git</developerConnection>
-    <tag>pam-auth-1.5.1</tag>
+    <tag>pam-auth-1.6</tag>
+    <url>https://github.com/jenkinsci/plugin-pom/pam-auth</url>
   </scm>
   <distributionManagement>
     <repository>
@@ -101,7 +102,7 @@
   <repositories>
     <repository>
       <id>repo.jenkins-ci.org</id>
-      <url>http://repo.jenkins-ci.org/public/</url>
+      <url>https://repo.jenkins-ci.org/public/</url>
     </repository>
   </repositories>
   <build>
@@ -109,7 +110,7 @@
       <plugin>
         <groupId>org.jenkins-ci.tools</groupId>
         <artifactId>maven-hpi-plugin</artifactId>
-        <version>3.3</version>
+        <version>3.9</version>
         <extensions>true</extensions>
       </plugin>
       <plugin>

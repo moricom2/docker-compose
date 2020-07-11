@@ -4,20 +4,24 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.jenkins-ci.plugins</groupId>
   <artifactId>timestamper</artifactId>
-  <version>1.9</version>
+  <version>1.11.3</version>
   <packaging>hpi</packaging>
   <name>Timestamper</name>
   <description>Adds timestamps to the Console Output</description>
-  <url>http://wiki.jenkins-ci.org/display/JENKINS/Timestamper</url>
+  <url>https://github.com/jenkinsci/timestamper-plugin</url>
   <inceptionYear>2016</inceptionYear>
   <licenses>
     <license>
       <name>The MIT License (MIT)</name>
-      <url>http://opensource.org/licenses/MIT</url>
+      <url>https://opensource.org/licenses/MIT</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
   <developers>
+    <developer>
+      <id>basil</id>
+      <name>Basil Crow</name>
+    </developer>
     <developer>
       <id>stevengbrown</id>
       <name>Steven Brown</name>
@@ -31,7 +35,7 @@
   <scm>
     <connection>scm:git:git://github.com/jenkinsci/timestamper-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/timestamper-plugin.git</developerConnection>
-    <tag>timestamper-1.9</tag>
+    <tag>timestamper-1.11.3</tag>
     <url>https://github.com/jenkinsci/timestamper-plugin</url>
   </scm>
   <distributionManagement>
@@ -52,19 +56,49 @@
     <dependency>
       <groupId>org.jenkins-ci.plugins.workflow</groupId>
       <artifactId>workflow-step-api</artifactId>
-      <version>2.16</version>
+      <version>2.19</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins.workflow</groupId>
       <artifactId>workflow-api</artifactId>
-      <version>2.30</version>
+      <version>2.39</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>com.google.code.findbugs</groupId>
-      <artifactId>annotations</artifactId>
-      <version>3.0.0</version>
+      <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
+      <artifactId>owasp-java-html-sanitizer</artifactId>
+      <version>20191001.1</version>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>guava</artifactId>
+          <groupId>com.google.guava</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.9</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.main</groupId>
+      <artifactId>jenkins-core</artifactId>
+      <version>2.164.3</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.spotbugs</groupId>
+      <artifactId>spotbugs-annotations</artifactId>
+      <version>3.1.11</version>
       <scope>provided</scope>
       <optional>true</optional>
     </dependency>
@@ -78,40 +112,33 @@
     <dependency>
       <groupId>org.codehaus.mojo</groupId>
       <artifactId>animal-sniffer-annotations</artifactId>
-      <version>1.17</version>
+      <version>1.18</version>
       <scope>provided</scope>
       <optional>true</optional>
     </dependency>
     <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>3.1.0</version>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <version>1.2</version>
       <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jenkins-ci.main</groupId>
-      <artifactId>jenkins-core</artifactId>
-      <version>2.121.1</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.7.25</version>
-      <scope>compile</scope>
-      <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.kohsuke</groupId>
       <artifactId>access-modifier-annotation</artifactId>
-      <version>1.15</version>
+      <version>1.14</version>
       <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>annotation-indexer</artifactId>
+          <groupId>org.jenkins-ci</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
   </dependencies>
   <repositories>
     <repository>
       <id>repo.jenkins-ci.org</id>
-      <url>http://repo.jenkins-ci.org/public/</url>
+      <url>https://repo.jenkins-ci.org/public/</url>
     </repository>
   </repositories>
   <build>
@@ -119,7 +146,7 @@
       <plugin>
         <groupId>org.jenkins-ci.tools</groupId>
         <artifactId>maven-hpi-plugin</artifactId>
-        <version>2.6</version>
+        <version>3.13</version>
         <extensions>true</extensions>
       </plugin>
       <plugin>

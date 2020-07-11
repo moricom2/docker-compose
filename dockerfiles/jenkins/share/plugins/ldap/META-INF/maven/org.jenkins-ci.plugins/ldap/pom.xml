@@ -4,36 +4,36 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>2.36</version>
+    <version>3.53</version>
     <relativePath />
   </parent>
 
   <artifactId>ldap</artifactId>
-  <version>1.20</version>
+  <version>1.24</version>
   <packaging>hpi</packaging>
 
   <name>LDAP Plugin</name>
   <description>Adds LDAP authentication to Jenkins</description>
-  <url>https://wiki.jenkins-ci.org/display/JENKINS/LDAP+Plugin</url>
+  <url>https://github.com/jenkinsci/ldap-plugin</url>
   <licenses>
     <license>
       <name>The MIT license</name>
-      <url>http://www.opensource.org/licenses/mit-license.php</url>
+      <url>https://www.opensource.org/licenses/mit-license.php</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
 
   <properties>
-    <apacheds.version>2.0.0-M23</apacheds.version>
-    <apacheds.jdbm.version>2.0.0-M3</apacheds.jdbm.version>
-    <jenkins.version>1.651.3</jenkins.version>
-    <jenkins-test-harness.version>2.32</jenkins-test-harness.version>
+    <apacheds.version>2.0.0.AM25</apacheds.version>
+    <jenkins.version>2.60.3</jenkins.version>
+    <java.level>8</java.level>
+    <configuration-as-code.version>1.36</configuration-as-code.version>
   </properties>
 
   <scm>
     <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}-plugin.git</developerConnection>
-    <tag>ldap-1.20</tag>
+    <tag>ldap-1.24</tag>
   </scm>
 
   <repositories>
@@ -58,16 +58,13 @@
     <dependency>
       <groupId>org.jenkins-ci.test</groupId>
       <artifactId>docker-fixtures</artifactId>
-      <version>1.0</version>
+      <version>1.8</version>
       <scope>test</scope>
       <exclusions>
-        <exclusion> <!-- pending release of https://github.com/jenkinsci/docker-fixtures/pull/6 in 1.1 -->
-          <groupId>com.google.inject</groupId>
-          <artifactId>guice</artifactId>
-        </exclusion>
+        <!-- Required: 2.2.3, JCasC includes: 2.10.2 -->
         <exclusion>
-          <groupId>org.jenkins-ci</groupId> <!-- pending https://github.com/jenkinsci/docker-fixtures/pull/7 -->
-          <artifactId>annotation-indexer</artifactId>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
@@ -135,14 +132,6 @@
       <groupId>org.apache.directory.server</groupId>
       <artifactId>apacheds-interceptor-kerberos</artifactId>
       <version>${apacheds.version}</version>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.directory.jdbm</groupId>
-      <artifactId>apacheds-jdbm1</artifactId>
-      <!--type>bundle</type-->
-      <version>${apacheds.jdbm.version}</version>
       <scope>test</scope>
     </dependency>
 
@@ -253,7 +242,21 @@
     <dependency>
       <groupId>org.jsoup</groupId>
       <artifactId>jsoup</artifactId>
-      <version>1.10.2</version>
+      <version>1.11.3</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>io.jenkins</groupId>
+      <artifactId>configuration-as-code</artifactId>
+      <version>${configuration-as-code.version}</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>io.jenkins.configuration-as-code</groupId>
+      <artifactId>test-harness</artifactId>
+      <version>${configuration-as-code.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

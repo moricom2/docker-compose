@@ -1,20 +1,24 @@
 Manifest-Version: 1.0
 Archiver-Version: Plexus Archiver
 Created-By: Apache Maven
-Built-By: integer
-Build-Jdk: 1.8.0_181
+Built-By: bitwiseman
+Build-Jdk: 11.0.5
 Extension-Name: github-api
 Specification-Title: The Jenkins Plugins Parent POM Project
 Implementation-Title: github-api
-Implementation-Version: 1.95
+Implementation-Version: 1.114.3
 Group-Id: org.jenkins-ci.plugins
 Short-Name: github-api
 Long-Name: GitHub API Plugin
-Url: https://wiki.jenkins-ci.org/display/JENKINS/GitHub+API+Plugin
-Plugin-Version: 1.95
-Hudson-Version: 2.60.3
-Jenkins-Version: 2.60.3
-Plugin-Dependencies: jackson2-api:2.9.7.1
+Url: https://github.com/jenkinsci/github-api-plugin
+Minimum-Java-Version: 1.8
+Plugin-Version: 1.114.3
+Hudson-Version: 2.164.3
+Jenkins-Version: 2.164.3
+Plugin-Dependencies: okhttp-api:3.14.9,jackson2-api:2.10.2
 Plugin-Developers: 
 Support-Dynamic-Loading: true
+Plugin-License-Name: The MIT License (MIT)
+Plugin-License-Url: http://opensource.org/licenses/MIT
+Plugin-ScmUrl: https://github.com/jenkinsci/github-api-plugin
 

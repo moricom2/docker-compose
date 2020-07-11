@@ -27,7 +27,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.jenkins-ci.plugins</groupId>
   <artifactId>scm-api</artifactId>
-  <version>2.5.0</version>
+  <version>2.6.3</version>
   <packaging>hpi</packaging>
   <name>SCM API Plugin</name>
   <description>This plugin provides a new enhanced API for interacting with SCM systems.</description>
@@ -49,7 +49,7 @@
   <scm>
     <connection>scm:git:git://github.com/jenkinsci/scm-api-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/scm-api-plugin.git</developerConnection>
-    <tag>scm-api-2.5.0</tag>
+    <tag>scm-api-2.6.3</tag>
     <url>https://github.com/jenkinsci/scm-api-plugin</url>
   </scm>
   <distributionManagement>
@@ -99,7 +99,7 @@
     <dependency>
       <groupId>org.jenkins-ci.main</groupId>
       <artifactId>jenkins-core</artifactId>
-      <version>2.164.3</version>
+      <version>2.107.3</version>
       <scope>provided</scope>
     </dependency>
     <dependency>

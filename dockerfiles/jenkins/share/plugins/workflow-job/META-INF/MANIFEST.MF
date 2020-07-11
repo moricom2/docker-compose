@@ -6,17 +6,20 @@ Build-Jdk: 1.8.0_161
 Extension-Name: workflow-job
 Specification-Title: The Jenkins Plugins Parent POM Project
 Implementation-Title: workflow-job
-Implementation-Version: 2.32
+Implementation-Version: 2.39
 Group-Id: org.jenkins-ci.plugins.workflow
 Short-Name: workflow-job
 Long-Name: Pipeline: Job
-Url: https://wiki.jenkins.io/display/JENKINS/Pipeline+Job+Plugin
+Url: https://github.com/jenkinsci/workflow-job-plugin
 Compatible-Since-Version: 2.26
 Minimum-Java-Version: 1.8
-Plugin-Version: 2.32
-Hudson-Version: 2.121.1
-Jenkins-Version: 2.121.1
-Plugin-Dependencies: workflow-api:2.32,workflow-step-api:2.19,workflow
- -support:3.2
+Plugin-Version: 2.39
+Hudson-Version: 2.138.4
+Jenkins-Version: 2.138.4
+Plugin-Dependencies: workflow-api:2.36,workflow-step-api:2.20,workflow
+ -support:3.3
 Plugin-Developers: 
+Plugin-License-Name: MIT License
+Plugin-License-Url: https://opensource.org/licenses/MIT
+Plugin-ScmUrl: https://github.com/jenkinsci/workflow-job-plugin
 

@@ -6,18 +6,20 @@ Build-Jdk: 1.8.0_161
 Extension-Name: workflow-support
 Specification-Title: The Jenkins Plugins Parent POM Project
 Implementation-Title: workflow-support
-Implementation-Version: 3.3
+Implementation-Version: 3.5
 Group-Id: org.jenkins-ci.plugins.workflow
 Short-Name: workflow-support
 Long-Name: Pipeline: Supporting APIs
-Url: https://wiki.jenkins.io/display/JENKINS/Pipeline+Supporting+APIs+
- Plugin
+Url: https://github.com/jenkinsci/workflow-support-plugin
 Compatible-Since-Version: 3.0
 Minimum-Java-Version: 1.8
-Plugin-Version: 3.3
-Hudson-Version: 2.121.1
-Jenkins-Version: 2.121.1
-Plugin-Dependencies: workflow-api:2.30,workflow-step-api:2.19,scm-api:
- 2.2.6,script-security:1.39
+Plugin-Version: 3.5
+Hudson-Version: 2.176.4
+Jenkins-Version: 2.176.4
+Plugin-Dependencies: workflow-api:2.40,workflow-step-api:2.22,scm-api:
+ 2.6.3,script-security:1.71
 Plugin-Developers: 
+Plugin-License-Name: MIT License
+Plugin-License-Url: https://opensource.org/licenses/MIT
+Plugin-ScmUrl: https://github.com/jenkinsci/workflow-support-plugin
 
