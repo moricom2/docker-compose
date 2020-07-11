@@ -109,9 +109,10 @@ services:
 > docker pull florentbenoit/jboss-keycloak-openshift:3.4.3.Final  
 > docker tag florentbenoit/jboss-keycloak-openshift:3.4.3.Final jboss/keycloak-openshift:3.4.3.Final  
 
-### 7. docker-compose로 이미지 받기(parallel) && docker-compose 실행
+### 7. docker-compose로 이미지 받기(parallel) && 실행 && 로그보기
 > docker-compose pull --parallel  
 > docker-compose up -d  
+> docker-compose logs -f
 
 ### 8. 결과 확인
 > docker-compose ps  
