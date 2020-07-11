@@ -59,7 +59,7 @@ services:
       - '/data/gitlab/logs:/var/log/gitlab'
       - '/data/gitlab/data:/var/opt/gitlab'    
   jenkins:
-!   image: 'jenkins:latest'
+!   image: 'jenkins/jenkins:latest'
     user: root
     ports:
       - '8080:8080'
@@ -89,7 +89,7 @@ services:
 ```
 ### 4.  maven 플러그인 copy + jenkins 컨테이너 이미지 빌드 && volume 디렉토리에 디폴트 플러그인 copy
 > cp -r /app/docker-compose/dockerfiles/.m2 /app/docker-compose/dockerfiles/jenkins/  
-> docker build -t jenkins:latest /app/docker-compose/dockerfiles/jenkins/  
+> docker build -t jenkins/jenkins:latest /app/docker-compose/dockerfiles/jenkins/  
 > mkdir -p /data/jenkins && cp -r /app/docker-compose/dockerfiles/jenkins/share /data/jenkins/jenkins_home  
 
 ### 5. nexus 컨테이너 실행시 volume 디렉토리 접근권한 오류 방지를 위한 설정
@@ -118,7 +118,7 @@ services:
                                NAMES
  e6e33dfd1bd4        sonatype/nexus:oss                     "/bin/sh -c 'java   …"   21 minutes ago      Up 21 minutes             0.0.0.0:8081->8081/tcp
 +                                  cicd_nexus_1
- 362e26958539        jenkins:latest                         "/bin/tini -- /usr/l…"   21 minutes ago      Up 21 minutes             0.0.0.0:8080->8080/tcp, 50000/tcp
+ 362e26958539        jenkins/jenkins:latest                 "/bin/tini -- /usr/l…"   21 minutes ago      Up 21 minutes             0.0.0.0:8080->8080/tcp, 50000/tcp
 +                                  cicd_jenkins_1
  802ac4d52b16        sonarqube:latest                       "bin/run.sh bin/sona…"   21 minutes ago      Up 21 minutes             0.0.0.0:9000->9000/tcp
 +                                  cicd_sonarqube_1
