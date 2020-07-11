@@ -87,9 +87,10 @@ services:
     ports:
       - '5000:5000'
 ```
-### 4. jenkins 컨테이너 이미지 빌드 && volume 디렉토리에 디폴트 플러그인 copy
+### 4.  maven 플러그인 copy + jenkins 컨테이너 이미지 빌드 && volume 디렉토리에 디폴트 플러그인 copy
+> cp /app/docker-compose/dockerfiles/.m2 /app/docker-compose/dockerfiles/jenkins/  
 > docker build -t jenkins:latest /app/docker-compose/dockerfiles/jenkins/  
-> mkdir -p /data/jenkins && cp -R /app/docker-compose/dockerfiles/jenkins/share /data/jenkins/jenkins_home
+> mkdir -p /data/jenkins && cp -R /app/docker-compose/dockerfiles/jenkins/share /data/jenkins/jenkins_home  
 
 ### 5. nexus 컨테이너 실행시 volume 디렉토리 접근권한 오류 방지를 위한 설정
 > mkdir -p /data/nexus/data && chown -R 200 /data/nexus/data  
@@ -198,7 +199,8 @@ services:
  2) che8082_keycloak: http://192.168.63.186:5050
  
  
-### 8. dev-machine 컨테이너 이미지 빌드 (maven 플러그인 copy)
+### 8. maven 플러그인 copy + dev-machine 컨테이너 이미지 빌드
+> cp /app/docker-compose/dockerfiles/.m2 /app/docker-compose/dockerfiles/ubuntu_jdk8/  
 > docker build -t eclipse/ubuntu_jdk8:latest /app/docker-compose/dockerfiles/ubuntu_jdk8/  
 
 ```diff
