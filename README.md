@@ -171,6 +171,7 @@ services:
       CHE_MULTIUSER: 'true'
 +     CHE_IP: '192.168.63.186'
 +     CHE_HOST: '192.168.63.186'
+      TZ: 'Asia/Seoul'
 ```
 
 ### 4. eclipse-che 컨테이너 실행시 keycloak 관련 오류 방지를 위한 이미지 pull & tag 작업
