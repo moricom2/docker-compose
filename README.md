@@ -208,18 +208,28 @@ services:
  1) che-8082: http://192.168.63.186:8082  
  2) che8082_keycloak: http://192.168.63.186:5050
  
-```diff 
-### 8. maven 플러그인 copy + dev-machine 컨테이너 이미지 빌드
-> cp -r /app/docker-compose/dockerfiles/.m2 /app/docker-compose/dockerfiles/ubuntu_jdk8/  
-> docker build -t eclipse/ubuntu_jdk8:latest /app/docker-compose/dockerfiles/ubuntu_jdk8/  
+```diff
+### [참고] maven 플러그인 copy + dev-machine 컨테이너 이미지 빌드
+cp -r /app/docker-compose/dockerfiles/.m2 /app/docker-compose/dockerfiles/ubuntu_jdk8/  
+docker build -t eclipse/ubuntu_jdk8:latest /app/docker-compose/dockerfiles/ubuntu_jdk8/  
 ```
 
 ```diff
+### [참고] dev-machine 컨테이너로 maven 플러그인 copy
 docker cp /app/docker-compose/dockerfiles/.m2/repository 컨테이너명:/home/user/.m2/
 docker exec 컨테이너명 sudo chown -R user:user /home/user/.m2/repository
 ```
 
 ```diff
-cp ${current.project.path}/target/*.war $TOMCAT_HOME/webapps/ROOT.war
-$TOMCAT_HOME/bin/catalina.sh run 2>&1
+### [참고] dev-machine 명령어
+[Build] 
+ > mvn clean install -f ${current.project.path}
+[Package] 
+ > mvn clean package -DskipTests=true -f ${current.project.path}
+[Test] 
+ > mvn surefire-report:report -f ${current.project.path}
+[Run] 
+> <s>cp ${current.project.path}/target/*.war $TOMCAT_HOME/webapps/ROOT.war</s>
+> $TOMCAT_HOME/bin/catalina.sh run 2>&1
+
 ```
