@@ -229,7 +229,7 @@ docker exec 컨테이너명 sudo chown -R user:user /home/user/.m2/repository
 [Test] 
  > mvn surefire-report:report -f ${current.project.path}
 [Run] 
-> <s>cp ${current.project.path}/target/*.war $TOMCAT_HOME/webapps/ROOT.war</s>
+> cp ${current.project.path}/target/*.war $TOMCAT_HOME/webapps/ROOT.war   <- 버그가 있음
 > $TOMCAT_HOME/bin/catalina.sh run 2>&1
 
 ```
