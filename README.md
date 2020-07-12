@@ -208,11 +208,10 @@ services:
  1) che-8082: http://192.168.63.186:8082  
  2) che8082_keycloak: http://192.168.63.186:5050
  
-<del> 
-### 8. maven 플러그인 copy + dev-machine 컨테이너 이미지 빌드
+<s> ### 8. maven 플러그인 copy + dev-machine 컨테이너 이미지 빌드</s>
 > cp -r /app/docker-compose/dockerfiles/.m2 /app/docker-compose/dockerfiles/ubuntu_jdk8/  
 > docker build -t eclipse/ubuntu_jdk8:latest /app/docker-compose/dockerfiles/ubuntu_jdk8/  
-</del>
+
 
 ```diff
 docker cp /app/docker-compose/dockerfiles/.m2/repository 컨테이너명:/home/user/.m2/
