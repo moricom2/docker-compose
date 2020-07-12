@@ -49,15 +49,16 @@ services:
       GITLAB_OMNIBUS_CONFIG: |
 +       external_url 'http://192.168.63.180';registry_external_url 'http://192.168.63.180:5005'
         # Add any other gitlab.rb configuration here, each on its own line
-      GITLAB_ROOT_PASSWORD: "root_git"
-      GITLAB_TIMEZONE: "Asia/Seoul"  
+      GITLAB_ROOT_PASSWORD: 'root_git'
+      GITLAB_TIMEZONE: 'Asia/Seoul'
+      TZ: 'Asia/Seoul'
     ports:
       - '80:80'
       - '5005:5005'
     volumes:
       - '/data/gitlab/config:/etc/gitlab'
       - '/data/gitlab/logs:/var/log/gitlab'
-      - '/data/gitlab/data:/var/opt/gitlab'    
+      - '/data/gitlab/data:/var/opt/gitlab'   
   jenkins:
 !   image: 'jenkins/jenkins:latest'
     user: root
@@ -67,6 +68,8 @@ services:
 !     - '/data/jenkins/jenkins_home:/var/jenkins_home'
       - '/var/run/docker.sock:/var/run/docker.sock'
       - '/usr/local/bin/docker:/usr/bin/docker'
+    environment:
+      TZ: 'Asia/Seoul'
   sonarqube:
     image: 'sonarqube:latest'
     ports:
@@ -76,16 +79,22 @@ services:
       - '/data/sonarqube/data:/opt/sonarqube/data'
       - '/data/sonarqube/logs:/opt/sonarqube/logs'
       - '/data/sonarqube/extensions:/opt/sonarqube/extensions'
+    environment:
+      TZ: 'Asia/Seoul'
   nexus:
     image: 'sonatype/nexus:oss'
     ports:
       - '8081:8081'
     volumes:
 !     - '/data/nexus/data:/sonatype-work'      
+    environment:
+      TZ: 'Asia/Seoul'
   registry:
     image: 'registry:2.0'
     ports:
       - '5000:5000'
+    environment:
+      TZ: 'Asia/Seoul'
 ```
 ### 4.  maven 플러그인 copy + jenkins 컨테이너 이미지 빌드 && volume 디렉토리에 디폴트 플러그인 copy
 > cp -r /app/docker-compose/dockerfiles/.m2 /app/docker-compose/dockerfiles/jenkins/  

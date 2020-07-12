@@ -12,3 +12,4 @@ services:
       CHE_MULTIUSER: 'true'
       CHE_IP: '192.168.63.186'
       CHE_HOST: '192.168.63.186'
+      TZ: 'Asia/Seoul'
